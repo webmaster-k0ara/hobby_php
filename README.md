@@ -15,9 +15,6 @@ docker-compose exec app php -v
 # Docker コンテナの停止・削除
 docker-compose down
 
-# composer.jsonをもとに必要なライブラリをインストール
-composer install
-
 # SCSS→CSS出力
 docker-compose exec app /bin/bash
 vendor/scssphp/scssphp/bin/pscss < stylesheets/scss/app.scss > stylesheets/css/app.css
