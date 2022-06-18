@@ -21,6 +21,15 @@ vendor/scssphp/scssphp/bin/pscss < stylesheets/scss/app.scss > stylesheets/css/a
 
 ```
 
+## ローカル環境
+
+```bash
+# app
+localhost:1080
+
+# MyPHPAdmin
+localhost:1081
+```
 ## 環境構築
 
 ```bash
