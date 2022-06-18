@@ -14,42 +14,15 @@ docker-compose exec app php -v
 
 # Docker コンテナの停止・削除
 docker-compose down
+
+# composer.jsonをもとに必要なライブラリをインストール
+composer install
+
+# SCSS→CSS出力
+docker-compose exec app /bin/bash
+vendor/scssphp/scssphp/bin/pscss < stylesheets/scss/app.scss > stylesheets/css/app.css
+
 ```
-
-## 何を作るのか
-
-読書ログサービスを作成します。
-自分が読んだ本のログを登録し、表示できるサービスです。
-
-## 要件
-
-1. 読書ログを登録できる（書籍名、著者名、読書状況、評価、感想）
-2. 読書ログを表示できる
-
-## 開発ステップ
-
-### 1. テキスト版アプリケーション (CLI で動作するアプリケーション) を作成
-
-1. 読書ログを表示できる
-2. 読書ログを登録できる
-3. メニュー化し、アプリケーションとして動作できる
-4. 複数の読書ログを登録できる
-
-### 2. アプリケーションをデータベースに対応させる
-
-1. 読書ログを保存するテーブルを作成する
-2. 読書ログをデータベースに登録できる
-3. 読書ログをデータベースから表示できる
-
-### 3. Web アプリケーション (HTMLで動作するアプリケーション) を作成
-
-1. 登録画面で読書ログを登録できる
-2. 一覧画面で読書ログを表示できる
-
-### 4. Herokuを使用してアプリケーションをWeb上に公開
-
-1. Herokuのアカウントを作成する
-2. Heroku上でアプリケーションを動作できる
 
 ## 環境構築
 
@@ -120,23 +93,6 @@ docker-compose up -d
 # コンテナの起動状態を確認する
 docker-compose ps
 ```
-
-### 上記の対応をしてもコンテナが起動しない場合
-
-Docker 関連のファイルが変更されている可能性があるので、初期の状態に戻します。
-
-```bash
-# dokugaku-engineer/server-side リポジトリをクローンする
-git clone https://github.com/dokugaku-engineer/server-side.git
-
-# part 2 のソースコードを任意のディレクトリにコピーする
-cp -r sever-side/part2 -t ~/Documents/code
-
-# part2 のディレクトリに移動します
-cd  ~/Documents/code/part2
-```
-
-Docker 関連のファイルを初期状態に戻した上で、src ディレクトリに設置していたファイルを、 ~/Documents/code/part2/src にコピーして持ってきます。
 
 ### それでも起動しない場合
 
